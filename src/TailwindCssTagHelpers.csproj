@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Tailwind.Css</RootNamespace>
+    <AssemblyName>TailwindCssTagHelpers</AssemblyName>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>ASP.NET tag helpers to make working with Tailwind CSS and Tailwind UI easier</Description>
+    <Deterministic>true</Deterministic>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>See https://github.com/xt0rted/tailwindcss-tag-helpers/blob/main/CHANGELOG.md for more info</PackageReleaseNotes>
+    <PackageTags>Tailwind;TailwindCSS;TailwindUI;TagHelper;TagHelpers</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryBranch>main</RepositoryBranch>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../assets/logo.png" Pack="true" PackagePath="">
+      <LinkBase>assets</LinkBase>
+    </None>
+    <None Include="../LICENSE" Pack="true" PackagePath="">
+      <LinkBase>assets</LinkBase>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+is_global = true
+
+# RCS0053: Fix formatting of a list
+dotnet_diagnostic.RCS0053.severity = error
+
+# RCS0054: Fix formatting of a call chain
+dotnet_diagnostic.RCS0054.severity = error
+
+# RCS0055: Fix formatting of a binary expression chain
+dotnet_diagnostic.RCS0055.severity = error
+
+# RCS1036: Remove redundant empty line
+dotnet_diagnostic.RCS1036.severity = error
+
+# RCS1057: Add empty line between declarations
+dotnet_diagnostic.RCS1057.severity = error
+
+# RCS1076: Format declaration braces
+dotnet_diagnostic.RCS1076.severity = error
+
+# RCS1090: Call 'ConfigureAwait(false)'.
+dotnet_diagnostic.RCS1090.severity = none
+
+# RCS1153: Add empty line after closing brace
+dotnet_diagnostic.RCS1153.severity = error
+
+# RCS1247: Fix documentation comment tag
+dotnet_diagnostic.RCS1247.severity = error
+
+# RCS1248: Use 'is null' pattern instead of comparison (or vice versa)
+dotnet_diagnostic.RCS1248.severity = error
