@@ -18,7 +18,12 @@ jobs:
       - name: Build version suffix
         run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
 
-      - name: Setup .NET Core
+      - name: Setup .NET Core (3.1.x)
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Setup .NET Core (global.json)
         uses: actions/setup-dotnet@v1.7.2
 
       - run: dotnet build --configuration Release
