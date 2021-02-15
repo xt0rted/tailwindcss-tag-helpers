@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\TailwindCssTaghelpers.csproj" />
+    <ProjectReference Include="..\src\TailwindCssTagHelpers.csproj" />
   </ItemGroup>
 
 </Project>
