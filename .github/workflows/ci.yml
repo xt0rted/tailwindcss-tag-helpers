@@ -31,6 +31,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      packages: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.3.4
