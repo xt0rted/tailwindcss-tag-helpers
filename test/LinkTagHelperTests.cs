@@ -136,7 +136,7 @@ namespace Tailwind.Css.TagHelpers
         private static ViewContext MakeViewContext(string? requestPath = null)
         {
             var actionContext = new ActionContext(new DefaultHttpContext(), new RouteData(), new ActionDescriptor());
-            if (requestPath != null)
+            if (requestPath is not null)
             {
                 actionContext.HttpContext.Request.Path = new PathString(requestPath);
             }
