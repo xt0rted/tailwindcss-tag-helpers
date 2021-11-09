@@ -14,7 +14,7 @@ charset = utf-8-bom
 indent_size = 2
 
 # Xml project files
-[*.{csproj}]
+[*.csproj]
 charset = utf-8
 indent_size = 2
 
