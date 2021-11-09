@@ -1,12 +1,5 @@
 namespace Tailwind.Css.TagHelpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Threading.Tasks;
-
-    using FakeItEasy;
-
     using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -17,10 +10,6 @@ namespace Tailwind.Css.TagHelpers
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using Microsoft.AspNetCore.Razor.TagHelpers;
     using Microsoft.AspNetCore.Routing;
-
-    using Shouldly;
-
-    using Xunit;
 
     public class LinkTagHelperTests
     {

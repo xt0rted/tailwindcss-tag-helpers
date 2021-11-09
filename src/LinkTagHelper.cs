@@ -1,6 +1,5 @@
-﻿namespace Tailwind.Css.TagHelpers
+namespace Tailwind.Css.TagHelpers
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Text.Encodings.Web;
 
