@@ -48,8 +48,10 @@ public class LinkTagHelperTests
         classList.ShouldBe("text-black");
     }
 
-    [Fact]
-    public void Should_add_default_classes_when_not_the_current_url()
+    [Theory]
+    [InlineData(PathMatchStyle.Base)]
+    [InlineData(PathMatchStyle.Full)]
+    public void Should_add_default_classes_when_not_the_current_url(PathMatchStyle matchStyle)
     {
         // Given
         var context = MakeTagHelperContext(
@@ -72,6 +74,7 @@ public class LinkTagHelperTests
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
             ViewContext = viewContext,
+            MatchStyle = matchStyle,
         };
 
         // When
@@ -86,7 +89,7 @@ public class LinkTagHelperTests
     }
 
     [Fact]
-    public void Should_add_current_classes_when_the_current_url()
+    public void Should_add_default_classes_when_base_path_does_not_match()
     {
         // Given
         var context = MakeTagHelperContext(
@@ -100,15 +103,96 @@ public class LinkTagHelperTests
             new TagHelperAttributeList
             {
                 { "class", "text-black" },
-                { "href", "/bar" },
+                { "href", "/foo" },
             });
-        var viewContext = MakeViewContext("/bar");
+        var viewContext = MakeViewContext("/foobar");
 
         var helper = new LinkTagHelper
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
             ViewContext = viewContext,
+            MatchStyle = PathMatchStyle.Base,
+        };
+
+        // When
+        helper.Process(context, output);
+
+        // Then
+        output.Attributes["class"].ShouldNotBeNull();
+
+        var classList = output.Attributes["class"].Value as HtmlString;
+        classList.ShouldNotBeNull();
+        classList.Value.ShouldBe("text-black bg-white underline");
+    }
+
+    [Theory]
+    [InlineData("/foo")]
+    [InlineData("/foo/bar")]
+    public void Should_add_current_classes_when_full_path_match(string path)
+    {
+        // Given
+        var context = MakeTagHelperContext(
+            tagName: "a",
+            new TagHelperAttributeList
+            {
+                { "class", "text-black" },
+            });
+        var output = MakeTagHelperOutput(
+            tagName: "a",
+            new TagHelperAttributeList
+            {
+                { "class", "text-black" },
+                { "href", path },
+            });
+        var viewContext = MakeViewContext(path);
+
+        var helper = new LinkTagHelper
+        {
+            CurrentClass = "bg-orange no-underline",
+            DefaultClass = "bg-white underline",
+            ViewContext = viewContext,
+            MatchStyle = PathMatchStyle.Full,
+        };
+
+        // When
+        helper.Process(context, output);
+
+        // Then
+        output.Attributes["class"].ShouldNotBeNull();
+
+        var classList = output.Attributes["class"].Value as HtmlString;
+        classList.ShouldNotBeNull();
+        classList.Value.ShouldBe("text-black bg-orange no-underline");
+    }
+
+    [Theory]
+    [InlineData("/foo")]
+    [InlineData("/foo/bar")]
+    public void Should_add_current_classes_when_base_path_match(string requestPath)
+    {
+        // Given
+        var context = MakeTagHelperContext(
+            tagName: "a",
+            new TagHelperAttributeList
+            {
+                { "class", "text-black" },
+            });
+        var output = MakeTagHelperOutput(
+            tagName: "a",
+            new TagHelperAttributeList
+            {
+                { "class", "text-black" },
+                { "href", "/foo" },
+            });
+        var viewContext = MakeViewContext(requestPath);
+
+        var helper = new LinkTagHelper
+        {
+            CurrentClass = "bg-orange no-underline",
+            DefaultClass = "bg-white underline",
+            ViewContext = viewContext,
+            MatchStyle = PathMatchStyle.Base,
         };
 
         // When

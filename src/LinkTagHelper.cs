@@ -3,6 +3,7 @@ namespace Tailwind.Css.TagHelpers;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Encodings.Web;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -26,6 +27,9 @@ public class LinkTagHelper : TagHelper
     [HtmlAttributeName(DefaultClassAttributeName)]
     public string? DefaultClass { get; set; }
 
+    [HtmlAttributeName("match")]
+    public PathMatchStyle MatchStyle { get; set; } = PathMatchStyle.Full;
+
     [HtmlAttributeNotBound]
     [ViewContext]
     [NotNull]
@@ -36,12 +40,12 @@ public class LinkTagHelper : TagHelper
         if (context is null) throw new ArgumentNullException(nameof(context));
         if (output is null) throw new ArgumentNullException(nameof(output));
 
-        var target = ViewContext.HttpContext.Request.Path;
+        var currentPath = ViewContext.HttpContext.Request.Path;
 
-        var href = output.Attributes["href"]?.Value as string;
+        var linkPath = new PathString(output.Attributes["href"]?.Value as string);
 
         string[]? classList;
-        if (string.Equals(href, target, StringComparison.OrdinalIgnoreCase))
+        if (IsMatch(currentPath, linkPath))
         {
             classList = CurrentClass?.Split(SpaceChars, StringSplitOptions.RemoveEmptyEntries);
         }
@@ -58,4 +62,11 @@ public class LinkTagHelper : TagHelper
             }
         }
     }
+
+    private bool IsMatch(PathString currentPath, PathString linkPath) =>
+        MatchStyle switch
+        {
+            PathMatchStyle.Base => currentPath.StartsWithSegments(linkPath, StringComparison.OrdinalIgnoreCase),
+            _ => currentPath.Equals(linkPath, StringComparison.OrdinalIgnoreCase),
+        };
 }
