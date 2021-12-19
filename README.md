@@ -10,7 +10,7 @@ ASP.NET tag helpers to make working with [Tailwind CSS](https://tailwindcss.com/
 ## Installation
 
 ```terminal
-dotnet add package TailwindCssTagHelper
+dotnet add package TailwindCssTagHelpers
 ```
 
 ## Setup
@@ -18,7 +18,7 @@ dotnet add package TailwindCssTagHelper
 In your `_ViewImports.cshtml` add:
 
 ```html
-@addTagHelper *, TailwindCssTagHelper
+@addTagHelper *, TailwindCssTagHelpers
 ```
 
 ## Usage
