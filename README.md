@@ -31,12 +31,17 @@ The `default-class` list will be applied if the urls don't match, and the `curre
 
 The naming of these attributes aligns with the comments found in the Tailwind UI templates and the `-class` suffix allows the attributes to automatically work with [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind).
 
+The matching method can be either `Full` (default) which ensures the link path and current path are the same, or `Base` which ensures the link path starts with, or is the same as, the current path.
+
+> ℹ️ Query string values are not used for either method of matching.
+
 ```html
 <a
   asp-area="" asp-controller="Home" asp-action="Index"
   class="px-3 py-2 text-sm font-medium rounded-md"
   default-class="text-gray-300 hover:bg-gray-700 hover:text-white"
   current-class="text-white bg-gray-900"
+  match="Base"
 >
   Home
 </a>
