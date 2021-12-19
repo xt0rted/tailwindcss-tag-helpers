@@ -8,18 +8,22 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-[HtmlTargetElement("a")]
+[HtmlTargetElement("a", Attributes = CurrentClassAttributeName)]
+[HtmlTargetElement("a", Attributes = DefaultClassAttributeName)]
 public class LinkTagHelper : TagHelper
 {
+    private const string CurrentClassAttributeName = "current-class";
+    private const string DefaultClassAttributeName = "default-class";
+
     private static readonly char[] SpaceChars = { '\u0020', '\u0009', '\u000A', '\u000C', '\u000D' };
 
     // Puts us after the built-in link tag helper that resolves urls
     public override int Order => 1001;
 
-    [HtmlAttributeName("current-class")]
+    [HtmlAttributeName(CurrentClassAttributeName)]
     public string? CurrentClass { get; set; }
 
-    [HtmlAttributeName("default-class")]
+    [HtmlAttributeName(DefaultClassAttributeName)]
     public string? DefaultClass { get; set; }
 
     [HtmlAttributeNotBound]
