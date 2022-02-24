@@ -42,14 +42,14 @@ jobs:
         run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1.9.0
+        uses: actions/setup-dotnet@v1.9.1
         with:
           dotnet-version: |
             3.1.x
             5.0.x
 
       - name: Set up .NET Core (global.json)
-        uses: actions/setup-dotnet@v1.9.0
+        uses: actions/setup-dotnet@v1.9.1
 
       - run: dotnet build --configuration Release
 
