@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## Version 0.1.0
+## [0.1.0](https://github.com/xt0rted/tailwindcss-tag-helpers/releases/tag/v0.1.0) - 2021-12-19
 
 - Added `LinkTagHelper`
 - Include `README.md` in the nupkg
