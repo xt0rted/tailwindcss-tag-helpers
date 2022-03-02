@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.0.0
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v2.0.0
