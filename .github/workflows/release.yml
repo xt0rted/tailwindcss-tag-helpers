@@ -37,7 +37,7 @@ jobs:
       - run: dotnet pack --configuration Release --no-build --output ./artifacts
 
       - name: Publish artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.0.0
         with:
           path: ./artifacts/*.nupkg
 
