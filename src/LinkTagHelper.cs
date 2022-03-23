@@ -63,8 +63,8 @@ public class LinkTagHelper : TagHelper
         }
     }
 
-    private bool IsMatch(PathString currentPath, PathString linkPath) =>
-        MatchStyle switch
+    private bool IsMatch(PathString currentPath, PathString linkPath)
+        => MatchStyle switch
         {
             PathMatchStyle.Base => currentPath.StartsWithSegments(linkPath, StringComparison.OrdinalIgnoreCase),
             _ => currentPath.Equals(linkPath, StringComparison.OrdinalIgnoreCase),
