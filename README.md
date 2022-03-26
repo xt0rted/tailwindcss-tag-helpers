@@ -1,4 +1,4 @@
-# tailwindcss-tag-helpers
+# <img src="assets/logo.svg" align="left" height="45"> tailwindcss-tag-helpers
 
 [![CI build status](https://github.com/xt0rted/tailwindcss-tag-helpers/workflows/CI/badge.svg)](https://github.com/xt0rted/tailwindcss-tag-helpers/actions?query=workflow%3ACI)
 [![NuGet Package](https://img.shields.io/nuget/v/TailwindCssTagHelpers?logo=nuget)](https://www.nuget.org/packages/TailwindCssTagHelpers)
