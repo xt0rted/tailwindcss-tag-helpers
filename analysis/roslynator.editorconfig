@@ -11,14 +11,17 @@ roslynator_binary_operator_new_line = after
 roslynator_blank_line_between_closing_brace_and_switch_section = false
 roslynator_blank_line_between_single_line_accessors = false
 roslynator_blank_line_between_using_directives = separate_groups
-roslynator_block_braces_style = single_line_when_empty
+roslynator_block_braces_style = multi_line
 roslynator_body_style = expression
 roslynator_conditional_operator_condition_parentheses_style = omit
 roslynator_conditional_operator_new_line = before
 roslynator_configure_await = false
+roslynator_doc_comment_summary_style = multi_line
 roslynator_empty_string_style = literal
+roslynator_enum_flag_value_style = decimal_number
 roslynator_enum_has_flag_style = method
 roslynator_new_line_before_while_in_do_statement = true
+roslynator_infinite_loop_style = while
 roslynator_null_check_style = pattern_matching
 roslynator_object_creation_parentheses_style = omit
 roslynator_suppress_unity_script_methods = false
@@ -390,12 +393,6 @@ dotnet_diagnostic.RCS1098.severity = error
 # RCS1099: Default label should be the last label in a switch section
 dotnet_diagnostic.RCS1099.severity = error
 
-# RCS1100: Format documentation summary on a single line
-dotnet_diagnostic.RCS1100.severity = none
-
-# RCS1101: Format documentation summary on multiple lines
-dotnet_diagnostic.RCS1101.severity = error
-
 # RCS1102: Make class static
 dotnet_diagnostic.RCS1102.severity = error
 
@@ -764,6 +761,51 @@ dotnet_diagnostic.RCS1249.severity = error
 
 # RCS1250: Use implicit/explicit object creation
 dotnet_diagnostic.RCS1250.severity = error
+
+# RCS1251: Remove unnecessary braces from record declaration
+dotnet_diagnostic.RCS1251.severity = error
+
+# RCS1252: Normalize usage of infinite loop
+dotnet_diagnostic.RCS1252.severity = error
+
+# RCS1253: Normalize format of enum flag value
+dotnet_diagnostic.RCS1253.severity = error
+
+# RCS1254: Normalize format of enum flag value
+dotnet_diagnostic.RCS1254.severity = error
+
+# RCS9001: Use pattern matching
+dotnet_diagnostic.RCS9001.severity = error
+
+# RCS9002: Use property SyntaxNode.SpanStart
+dotnet_diagnostic.RCS9002.severity = error
+
+# RCS9003: Unnecessary conditional access
+dotnet_diagnostic.RCS9003.severity = error
+
+# RCS9004: Call 'Any' instead of accessing 'Count'
+dotnet_diagnostic.RCS9004.severity = error
+
+# RCS9005: Unnecessary null check
+dotnet_diagnostic.RCS9005.severity = error
+
+# RCS9006: Use element access
+dotnet_diagnostic.RCS9006.severity = error
+
+# RCS9007: Use return value
+dotnet_diagnostic.RCS9007.severity = error
+
+# RCS9008: Call 'Last' instead of using []
+dotnet_diagnostic.RCS9008.severity = error
+
+# RCS9009: Unknown language name
+dotnet_diagnostic.RCS9009.severity = error
+
+# RCS9010: Specify ExportCodeRefactoringProviderAttribute.Name
+dotnet_diagnostic.RCS9010.severity = error
+
+# RCS9011: Specify ExportCodeFixProviderAttribute.Name
+dotnet_diagnostic.RCS9011.severity = error
 
 #
 # Refactorings
