@@ -21,7 +21,7 @@ jobs:
         run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Set up .NET
-        uses: xt0rted/setup-dotnet@v1.1.0
+        uses: xt0rted/setup-dotnet@v1.2.0
 
       - run: dotnet build --configuration Release
 
