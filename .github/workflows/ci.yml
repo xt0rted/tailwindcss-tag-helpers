@@ -47,7 +47,7 @@ jobs:
         run: echo "VERSION_SUFFIX=beta.${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Set up .NET
-        uses: xt0rted/setup-dotnet@v1.3.0
+        uses: xt0rted/setup-dotnet@v1.4.0
 
       - run: dotnet build --configuration Release
 
