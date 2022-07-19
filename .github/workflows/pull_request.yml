@@ -45,7 +45,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3.3.0
         with:
-          node-version: 15
+          node-version: 18
 
       - uses: xt0rted/markdownlint-problem-matcher@v1.1.0
 
