@@ -27,9 +27,9 @@ jobs:
 
       - uses: xt0rted/markdownlint-problem-matcher@v1.1.0
 
-      - run: yarn install
+      - run: npm ci
 
-      - run: yarn test
+      - run: npm test
 
   build:
     needs: lint-markdown
