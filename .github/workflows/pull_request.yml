@@ -7,34 +7,11 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  CONFIGURATION: Release
   DOTNET_NOLOGO: true
   FORCE_COLOR: 3
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3.0.2
-
-      - name: Build version suffix
-        run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
-
-      - name: Set up .NET
-        uses: xt0rted/setup-dotnet@v1.4.0
-
-      - run: dotnet build --configuration Release
-
-      - run: dotnet test --configuration Release --no-build
-
-      - run: dotnet pack --configuration Release --no-build --output ./artifacts --version-suffix $VERSION_SUFFIX
-
-      - name: Publish artifacts
-        uses: actions/upload-artifact@v3.1.0
-        with:
-          path: ./artifacts/*.nupkg
-
   lint-markdown:
     runs-on: ubuntu-latest
 
@@ -52,3 +29,27 @@ jobs:
       - run: npm ci
 
       - run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3.0.2
+
+      - name: Build version suffix
+        run: echo "VERSION_SUFFIX=alpha.${{ github.event.number }}" >> $GITHUB_ENV
+
+      - name: Set up .NET
+        uses: xt0rted/setup-dotnet@v1.4.0
+
+      - run: dotnet build
+
+      - run: dotnet test --no-build --logger GitHubActions
+
+      - run: dotnet pack --no-build --output ./artifacts --version-suffix $VERSION_SUFFIX
+
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          path: ./artifacts/*.nupkg

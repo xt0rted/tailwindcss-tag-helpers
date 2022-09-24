@@ -9,6 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  CONFIGURATION: Release
   DOTNET_NOLOGO: true
   FORCE_COLOR: 3
 
@@ -49,11 +50,11 @@ jobs:
       - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.4.0
 
-      - run: dotnet build --configuration Release
+      - run: dotnet build
 
-      - run: dotnet test --configuration Release --no-build
+      - run: dotnet test --no-build --logger GitHubActions
 
-      - run: dotnet pack --configuration Release --no-build --output ./artifacts --version-suffix $VERSION_SUFFIX
+      - run: dotnet pack --no-build --output ./artifacts --version-suffix $VERSION_SUFFIX
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v3.1.0
