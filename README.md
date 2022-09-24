@@ -42,11 +42,45 @@ In your `appsettings.json` add:
 
 ## Settings
 
-Name | Default Value | Description
+Name | Default value | Description
 :-- | :-- | :--
 `IncludeComments` | `false` | Add html comments before the target tag with base, current, and default classes to help make development/debugging easier.
 
 ## Usage
+
+### LinkAriaCurrentStateTagHelper
+
+Adds the [`aria-current="*"`](https://www.w3.org/TR/wai-aria-1.1/#aria-current) attribute to links that are processed by the `LinkTagHelper` and include an `aria-current-state="*"` attribute.
+
+```html
+<a
+  asp-area="" asp-controller="Home" asp-action="Index"
+  class="px-3 py-2 text-sm font-medium rounded-md"
+  default-class="text-gray-300 hover:bg-gray-700 hover:text-white"
+  current-class="text-white bg-gray-900"
+  aria-current-state="Page"
+>
+  Home
+</a>
+```
+
+Will output:
+
+```html
+<a
+  href="/"
+  class="px-3 py-2 text-sm font-medium rounded-md text-white bg-gray-900"
+  aria-current="page"
+>
+  Home
+</a>
+```
+
+#### Attributes
+
+Name | Value | Description
+:-- | :-- | :--
+`aria-current-state` | `True`, `Page` (default), `Step` | The value to use for the `aria-current` attribute.
 
 ### LinkTagHelper
 
@@ -80,3 +114,27 @@ The matching method can be either `Full` (default) which ensures the link path a
   </span>
 </a>
 ```
+
+Will output:
+
+```html
+<a
+  href="/"
+  class="px-3 py-2 text-sm font-medium rounded-md text-white bg-gray-900"
+>
+  Home
+  <span
+    class="ml-auto inline-block py-0.5 px-3 text-xs rounded-full bg-gray-50"
+  >
+    5
+  </span>
+</a>
+```
+
+#### Attributes
+
+Name | Value | Description
+:-- | :-- | :--
+`current-class` | `string` | The css classes to apply if the link matches the current url.
+`default-class` | `string` | The css classes to apply if the link doesn't match the current url.
+`match` | `Full` (default) or `Base` | The method to use when matching the link to the current url.
