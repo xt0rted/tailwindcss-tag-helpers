@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-- Updated `LinkTagHelper` so any immediate child elements that also have `default-class` or `current-class` attributes will also have their class lists merged.
+### Added
+
+- Added `LinkAriaCurrentStateTagHelper` which will add an [`aria-current="*"`](https://www.w3.org/TR/wai-aria-1.1/#aria-current) attribute to links that are processed by `LinkTagHelper` and include an `aria-current-state="*"` attribute.
+
+### Updated
+
+- Immediate child elements of `LinkTagHelper` that have `default-class` or `current-class` attributes will also have their class lists merged.
 - Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet).
 
 ## [0.1.0](https://github.com/xt0rted/tailwindcss-tag-helpers/releases/tag/v0.1.0) - 2021-12-19
