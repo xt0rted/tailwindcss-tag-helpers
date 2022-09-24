@@ -12,6 +12,7 @@
 
 - Immediate child elements of `LinkTagHelper` that have `default-class` or `current-class` attributes will also have their class lists merged.
 - Switched from [actions/setup-dotnet](https://github.com/actions/setup-dotnet) to [xt0rted/setup-dotnet](https://github.com/xt0rted/setup-dotnet).
+- Added [dotnet run-script](https://github.com/xt0rted/dotnet-run-script) for build and test scripts.
 
 ## [0.1.0](https://github.com/xt0rted/tailwindcss-tag-helpers/releases/tag/v0.1.0) - 2021-12-19
 

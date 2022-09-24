@@ -43,11 +43,13 @@ jobs:
       - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.4.0
 
-      - run: dotnet build
+      - run: dotnet tool restore
 
-      - run: dotnet test --no-build --logger GitHubActions
+      - run: dotnet r build
 
-      - run: dotnet pack --no-build --output ./artifacts --version-suffix $VERSION_SUFFIX
+      - run: dotnet r test -- --no-build --logger GitHubActions
+
+      - run: dotnet r pack -- --no-build --version-suffix $VERSION_SUFFIX
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v3.1.0

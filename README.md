@@ -138,3 +138,8 @@ Name | Value | Description
 `current-class` | `string` | The css classes to apply if the link matches the current url.
 `default-class` | `string` | The css classes to apply if the link doesn't match the current url.
 `match` | `Full` (default) or `Base` | The method to use when matching the link to the current url.
+
+## Development
+
+This project uses the [run-script](https://github.com/xt0rted/dotnet-run-script) dotnet tool to manage its build and test scripts.
+To use this you'll need to run `dotnet tool install` and then `dotnet r` to see the available commands or look at the `scripts` section in the [global.json](global.json).
