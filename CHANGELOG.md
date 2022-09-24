@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+> **Note**: This version drops support for .NET 5 which is no longer supported.
+
 ### Added
 
 - Added `LinkAriaCurrentStateTagHelper` which will add an [`aria-current="*"`](https://www.w3.org/TR/wai-aria-1.1/#aria-current) attribute to links that are processed by `LinkTagHelper` and include an `aria-current-state="*"` attribute.
