@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="Microsoft.AspNetCore.Mvc.RazorPages" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HeroiconsTagHelper" Version="1.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\TailwindCssTagHelpers.csproj" />
+  </ItemGroup>
+
+</Project>

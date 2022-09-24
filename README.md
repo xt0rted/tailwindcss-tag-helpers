@@ -21,6 +21,31 @@ In your `_ViewImports.cshtml` add:
 @addTagHelper *, TailwindCssTagHelpers
 ```
 
+In your `Startup.cs` add:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddTailwindCssTagHelpers(Configuration);
+}
+```
+
+In your `appsettings.json` add:
+
+```json
+{
+  "TailwindCss": {
+    "IncludeComments": true
+  }
+}
+```
+
+## Settings
+
+Name | Default Value | Description
+:-- | :-- | :--
+`IncludeComments` | `false` | Add html comments before the target tag with base, current, and default classes to help make development/debugging easier.
+
 ## Usage
 
 ### LinkTagHelper
@@ -29,11 +54,13 @@ The link tag helper will compare the `href` to the current url and apply one of 
 
 The `default-class` list will be applied if the urls don't match, and the `current-class` list will be applied if the urls do match.
 
+If an immediate child element has a `default-class` or `current-class` attribute it will also have its class lists merged.
+
 The naming of these attributes aligns with the comments found in the Tailwind UI templates and the `-class` suffix allows the attributes to automatically work with [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind).
 
 The matching method can be either `Full` (default) which ensures the link path and current path are the same, or `Base` which ensures the link path starts with, or is the same as, the current path.
 
-> ℹ️ Query string values are not used for either method of matching.
+> **Note**: Query string values are not used for either method of matching.
 
 ```html
 <a
@@ -44,5 +71,12 @@ The matching method can be either `Full` (default) which ensures the link path a
   match="Base"
 >
   Home
+  <span
+    class="ml-auto inline-block py-0.5 px-3 text-xs rounded-full"
+    current-class="bg-gray-50"
+    default-class="bg-gray-200 text-gray-600 group-hover:bg-gray-200"
+  >
+    5
+  </span>
 </a>
 ```
