@@ -25,9 +25,15 @@ public abstract class LinkTagHelperBase : TagHelper
         _htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
     }
 
+    /// <summary>
+    /// The classes to apply when the link url matches the current url.
+    /// </summary>
     [HtmlAttributeName(CurrentClassAttributeName)]
     public string? CurrentClass { get; set; }
 
+    /// <summary>
+    /// The classes to apply when the link url doesn't match the current url.
+    /// </summary>
     [HtmlAttributeName(DefaultClassAttributeName)]
     public string? DefaultClass { get; set; }
 
