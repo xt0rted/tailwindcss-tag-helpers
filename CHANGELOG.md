@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Added `FormFieldValidationStatusTagHelper` which will allow styling elements based on a field's validation status (e.g. style a form input red when it contains errors)
+
 ### Fixed
 
 - Base class extraction correctly handles `IHtmlContent` attribute types

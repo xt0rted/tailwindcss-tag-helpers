@@ -1,10 +1,97 @@
 ﻿@page
 @model IndexModel
+
+@using System.Linq.Expressions
+@using Microsoft.AspNetCore.Html
+
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a class="text-sky-600" href="https://docs.microsoft.com/aspnet/core" aria-current-state="Page">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@functions {
+    public IHtmlContent ErrorMessage(string expression)
+    {
+        ViewContext.ModelState.TryGetValue(expression, out var entry);
+
+        if (entry?.Errors.Count > 0)
+        {
+            var error = entry.Errors.FirstOrDefault(e => !string.IsNullOrEmpty(e.ErrorMessage)) ?? entry.Errors[0];
+
+            return new HtmlString(error.ErrorMessage);
+        }
+
+        return HtmlString.Empty;
+    }
+
+    public bool HasError(string expression)
+    {
+        ViewContext.ModelState.TryGetValue(expression, out var input);
+
+        return input?.Errors.Count > 0;
+    }
+}
+
+<form class="space-y-6" method="post">
+  <div>
+    <label
+      asp-for="Input.Email"
+      class="block text-sm font-medium text-gray-700"
+    >
+    </label>
+
+    <div class="relative mt-1 rounded-md shadow-sm">
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <heroicon-solid
+          icon="AtSymbol"
+          class="h-5 w-5"
+          asp-for="Input.Email"
+          default-class="text-gray-400"
+          error-class="text-red-400"
+        />
+      </div>
+      <input
+        type="text"
+        asp-for="Input.Email"
+        class="block w-full rounded-md pl-10 sm:text-sm"
+        default-class="transition border-gray-300 focus:border-blue-400 focus:ring-blue-400"
+        error-class="border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:outline-none focus:ring-red-500"
+        aria-describedby="@Html.Id("Input.Email")-hint"
+      >
+    </div>
+
+    @if (!HasError("Input.Email"))
+    {
+      <div
+        id="@Html.Id("Input.Email")-hint"
+        asp-for="Input.Email"
+        class="mt-2 text-sm"
+        default-class="mt-2 text-sm text-gray-500"
+        error-class="hidden"
+      >
+        Enter your primary email address here
+      </div>
+    }
+
+    @if (HasError("Input.Email"))
+    {
+      <div
+        id="@Html.IdFor(m => m.Input.Email)-hint"
+        asp-for="Input.Email"
+        class="mt-2 text-sm"
+        default-class="hidden"
+        error-class="mt-2 text-sm text-red-600"
+      >
+        @ErrorMessage("Input.Email")
+      </div>
+    }
+  </div>
+
+  <div>
+    <button
+      type="submit"
+      class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+    >
+      Submit
+    </button>
+  </div>
+</form>
