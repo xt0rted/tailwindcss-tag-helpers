@@ -14,8 +14,6 @@ public abstract class LinkTagHelperBase : TagHelper
     protected const string CurrentClassAttributeName = "current-class";
     protected const string DefaultClassAttributeName = "default-class";
 
-    protected static readonly char[] SpaceChars = { '\u0020', '\u0009', '\u000A', '\u000C', '\u000D' };
-
     private readonly TagOptions _settings;
 
     protected LinkTagHelperBase(IOptions<TagOptions> settings)
@@ -35,16 +33,9 @@ public abstract class LinkTagHelperBase : TagHelper
     {
         if (output is null) throw new ArgumentNullException(nameof(output));
 
-        string[]? classList;
-
-        if (isMatch)
-        {
-            classList = CurrentClass?.Split(SpaceChars, StringSplitOptions.RemoveEmptyEntries);
-        }
-        else
-        {
-            classList = DefaultClass?.Split(SpaceChars, StringSplitOptions.RemoveEmptyEntries);
-        }
+        var classList = isMatch
+            ? Utilities.SplitClassList(CurrentClass)
+            : Utilities.SplitClassList(DefaultClass);
 
         if (_settings.IncludeComments)
         {
