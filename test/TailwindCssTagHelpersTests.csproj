@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>Tailwind.Css.TagHelpers</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

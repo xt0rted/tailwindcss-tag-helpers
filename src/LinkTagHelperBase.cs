@@ -15,9 +15,15 @@ public abstract class LinkTagHelperBase : TagHelper
     protected const string DefaultClassAttributeName = "default-class";
 
     private readonly TagOptions _settings;
+    private readonly HtmlEncoder _htmlEncoder;
 
-    protected LinkTagHelperBase(IOptions<TagOptions> settings)
-        => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+    protected LinkTagHelperBase(
+        IOptions<TagOptions> settings,
+        HtmlEncoder htmlEncoder)
+    {
+        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+        _htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
+    }
 
     [HtmlAttributeName(CurrentClassAttributeName)]
     public string? CurrentClass { get; set; }
@@ -42,7 +48,7 @@ public abstract class LinkTagHelperBase : TagHelper
             output.PreElement.AppendHtmlLine("<!--");
 
             output.PreElement.Append("  Base: ");
-            output.PreElement.AppendLine(output.Attributes["class"]?.Value?.ToString() ?? "");
+            output.PreElement.AppendLine(Utilities.ExtractClassValue(output, _htmlEncoder));
 
             output.PreElement.Append("  Current: ");
             output.PreElement.AppendLine(CurrentClass ?? "");

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Base class extraction correctly handles `IHtmlContent` attribute types
+
 ## [0.2.0](https://github.com/xt0rted/tailwindcss-tag-helpers/compare/v0.1.0...v0.2.0) - 2022-09-24
 
 > **Note**: This version drops support for .NET 5 which is no longer supported.
