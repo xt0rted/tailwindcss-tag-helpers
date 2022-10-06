@@ -20,4 +20,29 @@ public static class IHtmlHelperExtensions
 
         return new HtmlString(json);
     }
+
+    public static IHtmlContent ErrorMessage<TModel>(this IHtmlHelper<TModel> htmlHelper, string expression)
+    {
+        ArgumentNullException.ThrowIfNull(htmlHelper);
+
+        htmlHelper.ViewContext.ModelState.TryGetValue(expression, out var entry);
+
+        if (entry?.Errors.Count > 0)
+        {
+            var error = entry.Errors.FirstOrDefault(e => !string.IsNullOrEmpty(e.ErrorMessage)) ?? entry.Errors[0];
+
+            return new HtmlString(error.ErrorMessage);
+        }
+
+        return HtmlString.Empty;
+    }
+
+    public static bool HasError<TModel>(this IHtmlHelper<TModel> htmlHelper, string expression)
+    {
+        ArgumentNullException.ThrowIfNull(htmlHelper);
+
+        htmlHelper.ViewContext.ModelState.TryGetValue(expression, out var input);
+
+        return input?.Errors.Count > 0;
+   }
 }

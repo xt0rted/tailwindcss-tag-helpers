@@ -1,34 +1,8 @@
 ﻿@page
 @model IndexModel
 
-@using System.Linq.Expressions
-@using Microsoft.AspNetCore.Html
-
 @{
     ViewData["Title"] = "Home page";
-}
-
-@functions {
-    public IHtmlContent ErrorMessage(string expression)
-    {
-        ViewContext.ModelState.TryGetValue(expression, out var entry);
-
-        if (entry?.Errors.Count > 0)
-        {
-            var error = entry.Errors.FirstOrDefault(e => !string.IsNullOrEmpty(e.ErrorMessage)) ?? entry.Errors[0];
-
-            return new HtmlString(error.ErrorMessage);
-        }
-
-        return HtmlString.Empty;
-    }
-
-    public bool HasError(string expression)
-    {
-        ViewContext.ModelState.TryGetValue(expression, out var input);
-
-        return input?.Errors.Count > 0;
-    }
 }
 
 <form class="space-y-6" method="post">
@@ -59,7 +33,7 @@
       >
     </div>
 
-    @if (!HasError("Input.Email"))
+    @if (!Html.HasError("Input.Email"))
     {
       <div
         id="@Html.Id("Input.Email")-hint"
@@ -72,7 +46,7 @@
       </div>
     }
 
-    @if (HasError("Input.Email"))
+    @if (Html.HasError("Input.Email"))
     {
       <div
         id="@Html.IdFor(m => m.Input.Email)-hint"
@@ -81,7 +55,7 @@
         default-class="hidden"
         error-class="mt-2 text-sm text-red-600"
       >
-        @ErrorMessage("Input.Email")
+        @Html.ErrorMessage("Input.Email")
       </div>
     }
   </div>
