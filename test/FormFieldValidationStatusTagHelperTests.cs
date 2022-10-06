@@ -20,7 +20,7 @@ public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
             new TagHelperAttributeList());
 
         var options = Options.Create(new TagOptions());
-        var helper = new FormFieldValidationStatusTagHelper(options, new HtmlTestEncoder())
+        var helper = new FormFieldValidationStatusTagHelper(options)
         {
             For = null,
         };
@@ -158,7 +158,7 @@ public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
         var modelState = DefaultModelState();
 
         var metadataProvider = new EmptyModelMetadataProvider();
-        var model = false;
+        const bool model = false;
         var modelExplorer = metadataProvider.GetModelExplorerForType(typeof(bool), model);
         var modelExpression = new ModelExpression(name, modelExplorer);
 
@@ -166,7 +166,7 @@ public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
 
         var options = Options.Create(new TagOptions { IncludeComments = includeComments });
 
-        return new FormFieldValidationStatusTagHelper(options, new HtmlTestEncoder())
+        return new FormFieldValidationStatusTagHelper(options)
         {
             ViewContext = viewContext,
             For = modelExpression,

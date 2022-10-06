@@ -100,7 +100,7 @@ public abstract class TagHelperTestBase
         return modelState;
     }
 
-    protected static string RenderedContent(TagHelperContent content)
+    internal static string RenderedContent(TagHelperContent content)
     {
         using var stringWriter = new StringWriter();
 

@@ -8,9 +8,16 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 internal static class Utilities
 {
-    private static readonly char[] SpaceChars = { '\u0020', '\u0009', '\u000A', '\u000C', '\u000D' };
+    private static readonly char[] SpaceChars =
+    {
+        '\u0020', // Space
+        '\u0009', // Tab
+        '\u000A', // Line Feed
+        '\u000C', // Form Feed
+        '\u000D', // Carriage Return
+    };
 
-    public static string ExtractClassValue(TagHelperOutput output, HtmlEncoder encoder)
+    public static string ExtractClassValue(TagHelperOutput output)
     {
         if (!output.Attributes.TryGetAttribute("class", out var classAttribute))
         {
@@ -26,7 +33,7 @@ internal static class Utilities
         {
             string stringValue => stringValue,
             HtmlString htmlString => htmlString.Value,
-            IHtmlContent htmlContent => ExtractHtmlContent(encoder, htmlContent),
+            IHtmlContent htmlContent => ExtractHtmlContent(htmlContent),
             _ => classAttribute.Value.ToString() ?? "",
         };
     }
@@ -43,11 +50,11 @@ internal static class Utilities
             StringSplitOptions.RemoveEmptyEntries);
     }
 
-    private static string ExtractHtmlContent(HtmlEncoder encoder, IHtmlContent htmlContent)
+    private static string ExtractHtmlContent(IHtmlContent htmlContent)
     {
         using var stringWriter = new StringWriter();
 
-        htmlContent.WriteTo(stringWriter, encoder);
+        htmlContent.WriteTo(stringWriter, HtmlEncoder.Default);
 
         return stringWriter.ToString();
     }

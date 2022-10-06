@@ -18,15 +18,9 @@ public class FormFieldValidationStatusTagHelper : TagHelper
     protected const string ErrorClassAttributeName = "error-class";
 
     private readonly TagOptions _settings;
-    private readonly HtmlEncoder _htmlEncoder;
 
-    public FormFieldValidationStatusTagHelper(
-        IOptions<TagOptions> settings,
-        HtmlEncoder htmlEncoder)
-    {
-        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
-        _htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
-    }
+    public FormFieldValidationStatusTagHelper(IOptions<TagOptions> settings)
+        => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
 
     /// <summary>
     /// An expression to be evaluated against the current model.
@@ -74,7 +68,7 @@ public class FormFieldValidationStatusTagHelper : TagHelper
             output.PreElement.AppendLine(For.Name);
 
             output.PreElement.Append("  Base: ");
-            output.PreElement.AppendLine(Utilities.ExtractClassValue(output, _htmlEncoder));
+            output.PreElement.AppendLine(Utilities.ExtractClassValue(output));
 
             output.PreElement.Append("  Default: ");
             output.PreElement.AppendLine(DefaultClass ?? "");

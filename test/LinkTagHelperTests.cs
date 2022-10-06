@@ -25,7 +25,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             });
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             ViewContext = MakeViewContext("/foo"),
         };
@@ -62,7 +62,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             });
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -100,7 +100,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             });
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -140,7 +140,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             });
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -180,7 +180,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             });
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -222,7 +222,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             {
                 IncludeComments = false,
             });
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -259,7 +259,7 @@ public class LinkTagHelperTests : TagHelperTestBase
             {
                 IncludeComments = true,
             });
-        var helper = new LinkTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
