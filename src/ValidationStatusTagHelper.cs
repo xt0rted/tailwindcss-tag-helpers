@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Options;
 
 [HtmlTargetElement("*", Attributes = ForAttributeName + ", " + ErrorClassAttributeName)]
-public class FormFieldValidationStatusTagHelper : TagHelper
+public class ValidationStatusTagHelper : TagHelper
 {
     protected const string ForAttributeName = "asp-for";
     protected const string DefaultClassAttributeName = "default-class";
@@ -19,7 +19,7 @@ public class FormFieldValidationStatusTagHelper : TagHelper
 
     private readonly TagOptions _settings;
 
-    public FormFieldValidationStatusTagHelper(IOptions<TagOptions> settings)
+    public ValidationStatusTagHelper(IOptions<TagOptions> settings)
         => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
 
     /// <summary>

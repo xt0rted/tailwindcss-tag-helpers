@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Options;
 
-public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
+public class ValidationStatusTagHelperTests : TagHelperTestBase
 {
     [Fact]
     public void Should_not_throw_when_for_is_null()
@@ -20,7 +20,7 @@ public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
             new TagHelperAttributeList());
 
         var options = Options.Create(new TagOptions());
-        var helper = new FormFieldValidationStatusTagHelper(options)
+        var helper = new ValidationStatusTagHelper(options)
         {
             For = null,
         };
@@ -151,7 +151,7 @@ public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
             """);
     }
 
-    private FormFieldValidationStatusTagHelper GetTagHelper(
+    private ValidationStatusTagHelper GetTagHelper(
         string name,
         bool includeComments = false)
     {
@@ -166,7 +166,7 @@ public class FormFieldValidationStatusTagHelperTests : TagHelperTestBase
 
         var options = Options.Create(new TagOptions { IncludeComments = includeComments });
 
-        return new FormFieldValidationStatusTagHelper(options)
+        return new ValidationStatusTagHelper(options)
         {
             ViewContext = viewContext,
             For = modelExpression,

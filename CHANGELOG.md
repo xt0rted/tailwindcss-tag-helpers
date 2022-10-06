@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added `FormFieldValidationStatusTagHelper` which will allow styling elements based on a field's validation status (e.g. style a form input red when it contains errors)
+- Added `ValidationStatusTagHelper` which will allow styling elements based on a field's validation status (e.g. style a form input red when it contains errors)
 
 ### Fixed
 
