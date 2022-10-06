@@ -71,7 +71,7 @@ public class FormFieldValidationStatusTagHelper : TagHelper
             output.PreElement.AppendHtmlLine("<!--");
 
             output.PreElement.Append("  For: ");
-            output.PreElement.AppendHtmlLine(For.Name);
+            output.PreElement.AppendLine(For.Name);
 
             output.PreElement.Append("  Base: ");
             output.PreElement.AppendLine(Utilities.ExtractClassValue(output, _htmlEncoder));
