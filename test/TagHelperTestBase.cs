@@ -14,7 +14,11 @@ public abstract class TagHelperTestBase
 {
     protected static ViewContext MakeViewContext(string? requestPath = null)
     {
-        var actionContext = new ActionContext(new DefaultHttpContext(), new RouteData(), new ActionDescriptor());
+        var actionContext = new ActionContext(
+            new DefaultHttpContext(),
+            new RouteData(),
+            new ActionDescriptor());
+
         if (requestPath is not null)
         {
             actionContext.HttpContext.Request.Path = new PathString(requestPath);
@@ -32,7 +36,34 @@ public abstract class TagHelperTestBase
             new HtmlHelperOptions());
     }
 
-    protected static TagHelperContext MakeTagHelperContext(string tagName, TagHelperAttributeList? attributes = null)
+    protected static ViewContext MakeViewContext(
+        object model,
+        IModelMetadataProvider metadataProvider,
+        ModelStateDictionary modelState)
+    {
+        var actionContext = new ActionContext(
+            new DefaultHttpContext(),
+            new RouteData(),
+            new ActionDescriptor(),
+            modelState);
+
+        var viewData = new ViewDataDictionary(metadataProvider, modelState)
+        {
+            Model = model,
+        };
+
+        return new ViewContext(
+            actionContext,
+            A.Fake<IView>(),
+            viewData,
+            A.Fake<ITempDataDictionary>(),
+            TextWriter.Null,
+            new HtmlHelperOptions());
+    }
+
+    protected static TagHelperContext MakeTagHelperContext(
+        string tagName,
+        TagHelperAttributeList? attributes = null)
     {
         attributes ??= new TagHelperAttributeList();
 
@@ -43,7 +74,9 @@ public abstract class TagHelperTestBase
             uniqueId: Guid.NewGuid().ToString("N"));
     }
 
-    protected static TagHelperOutput MakeTagHelperOutput(string tagName, TagHelperAttributeList? attributes = null)
+    protected static TagHelperOutput MakeTagHelperOutput(
+        string tagName,
+        TagHelperAttributeList? attributes = null)
     {
         attributes ??= new TagHelperAttributeList();
 
@@ -51,5 +84,28 @@ public abstract class TagHelperTestBase
             tagName,
             attributes,
             getChildContentAsync: (_, __) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
+    }
+
+    protected static ModelStateDictionary DefaultModelState()
+    {
+        var modelState = new ModelStateDictionary();
+
+        modelState.SetModelValue("", "", "");
+        modelState.SetModelValue("Email", "", "");
+        modelState.SetModelValue("Password", "", "");
+
+        modelState.AddModelError("", "Form error");
+        modelState.AddModelError("Password", "Password error");
+
+        return modelState;
+    }
+
+    protected static string RenderedContent(TagHelperContent content)
+    {
+        using var stringWriter = new StringWriter();
+
+        content.WriteTo(stringWriter, NullHtmlEncoder.Default);
+
+        return stringWriter.ToString();
     }
 }
