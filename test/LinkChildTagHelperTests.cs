@@ -24,7 +24,7 @@ public class LinkChildTagHelperTests : TagHelperTestBase
             });
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkChildTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkChildTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -60,7 +60,7 @@ public class LinkChildTagHelperTests : TagHelperTestBase
         AddLinkContext(context, isMatch);
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkChildTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkChildTagHelper(options)
         {
             ViewContext = MakeViewContext(),
         };
@@ -96,7 +96,7 @@ public class LinkChildTagHelperTests : TagHelperTestBase
         AddLinkContext(context, isMatch: false);
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkChildTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkChildTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -134,7 +134,7 @@ public class LinkChildTagHelperTests : TagHelperTestBase
         AddLinkContext(context, isMatch: true);
 
         var options = Options.Create(new TagOptions());
-        var helper = new LinkChildTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkChildTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -177,7 +177,7 @@ public class LinkChildTagHelperTests : TagHelperTestBase
             {
                 IncludeComments = false,
             });
-        var helper = new LinkChildTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkChildTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",
@@ -216,7 +216,7 @@ public class LinkChildTagHelperTests : TagHelperTestBase
             {
                 IncludeComments = true,
             });
-        var helper = new LinkChildTagHelper(options, new HtmlTestEncoder())
+        var helper = new LinkChildTagHelper(options)
         {
             CurrentClass = "bg-orange no-underline",
             DefaultClass = "bg-white underline",

@@ -1,12 +1,26 @@
 namespace Sample.Pages;
 
+using System.ComponentModel.DataAnnotations;
+
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger) => _logger = logger;
+    [BindProperty]
+    public InputModel Input { get; set; } = null!;
 
     public void OnGet()
     {
+    }
+
+    public IActionResult OnPost()
+    {
+        ModelState.AddModelError("", "User account doesn't exist");
+
+        return Page();
+    }
+
+    public class InputModel
+    {
+        [Required]
+        public string Email { get; set; } = null!;
     }
 }

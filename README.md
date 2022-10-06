@@ -7,6 +7,14 @@
 
 ASP.NET tag helpers to make working with [Tailwind CSS](https://tailwindcss.com/) and [Tailwind UI](https://tailwindui.com/) easier.
 
+Included tag helpers:
+
+Name | Description
+:-- | :--
+[LinkAriaCurrentStateTagHelper](#linkariacurrentstatetaghelper) | Adds the `aria-current` attribute to links that are processed by `LinkTagHelper` and include an `aria-current-state` attribute
+[LinkTagHelper](#linktaghelper) | Applies css classes based on the `href` value and current url
+[ValidationStatusTagHelper](#validationstatustaghelper) | Applies css classes based on the validation status of a model value
+
 ## Installation
 
 ```terminal
@@ -138,6 +146,42 @@ Name | Value | Description
 `current-class` | `string` | The css classes to apply if the link matches the current url.
 `default-class` | `string` | The css classes to apply if the link doesn't match the current url.
 `match` | `Full` (default) or `Base` | The method to use when matching the link to the current url.
+
+### ValidationStatusTagHelper
+
+The validation status tag helper will check the validation status of the model value passed to the `asp-for` attribute and apply one of two sets of css classes.
+
+The `default-class` list will be applied if the field is valid, and the `error-class` list will be applied if the field is invalid.
+
+```html
+<input
+  type="email"
+  asp-for="Input.Email"
+  class="block w-full rounded-md pl-10 sm:text-sm transition"
+  default-class="border-gray-300 focus:border-blue-400 focus:ring-blue-400"
+  error-class="border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:outline-none focus:ring-red-500"
+>
+```
+
+This tag helper target element is `*` so it can be used with any element, including web components and other tag helpers.
+
+```html
+<heroicon-solid
+  icon="AtSymbol"
+  class="h-5 w-5"
+  asp-for="Input.Email"
+  default-class="text-gray-400"
+  error-class="text-red-400"
+/>
+```
+
+#### Attributes
+
+Name | Value | Description
+:-- | :-- | :--
+`asp-for` | `ModelExpression` | An expression to be evaluated against the current model.
+`default-class` | `string` | The classes to apply when the form field doesn't have any errors.
+`error-class` | `string` | `default-class` | `string` | The classes to apply when the form field doesn't have any errors.
 
 ## Development
 

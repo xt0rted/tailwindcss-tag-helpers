@@ -1,83 +1,93 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@ViewData["Title"] - Sample</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
-<body class="bg-gray-100">
-  <div class="mx-auto w-64 p-8">
-    <nav class="space-y-1" aria-label="Sidebar">
-      <a
-        asp-area="" asp-page="/Index"
-        class="group flex items-center px-3 py-2 text-sm font-medium rounded-md"
-        default-class="text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-        current-class="bg-gray-200 text-gray-900"
-        aria-current-state="Page"
-      >
-        <heroicon-outline
-          icon="Home"
-          class=" flex-shrink-0 -ml-1 mr-3 h-6 w-6"
-          default-class="text-gray-400 group-hover:text-gray-500"
-          current-class="text-gray-500"
-        />
-        <span class="truncate">Home</span>
-      </a>
+<body class="h-full bg-gray-100">
+  <div class="flex flex-col h-full md:flex-row">
+    <div class="flex-1 overflow-auto">
+      <div class="mx-auto w-64 p-8">
+        <nav class="space-y-1" aria-label="Sidebar">
+          <a
+            asp-area="" asp-page="/Index"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md"
+            default-class="text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            current-class="bg-gray-200 text-gray-900"
+            aria-current-state="Page"
+          >
+            <heroicon-outline
+              icon="Home"
+              class=" flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+              default-class="text-gray-400 group-hover:text-gray-500"
+              current-class="text-gray-500"
+            />
+            <span class="truncate">Home</span>
+          </a>
 
-      <a
-        asp-area="" asp-page="/Privacy"
-        class="group flex items-center px-3 py-2 text-sm font-medium rounded-md"
-        default-class="text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-        current-class="bg-gray-200 text-gray-900"
-        aria-current-state="Page"
-      >
-        <heroicon-outline
-          icon="EyeOff"
-          class=" flex-shrink-0 -ml-1 mr-3 h-6 w-6"
-          default-class="text-gray-400 group-hover:text-gray-500"
-          current-class="text-gray-500"
-        />
-        <span class="truncate">Privacy</span>
+          <a
+            asp-area="" asp-page="/Privacy"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md"
+            default-class="text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            current-class="bg-gray-200 text-gray-900"
+            aria-current-state="Page"
+          >
+            <heroicon-outline
+              icon="EyeOff"
+              class=" flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+              default-class="text-gray-400 group-hover:text-gray-500"
+              current-class="text-gray-500"
+            />
+            <span class="truncate">Privacy</span>
 
-        <span
-          class="ml-auto inline-block py-0.5 px-3 text-xs rounded-full"
-          current-class="bg-gray-50"
-          default-class="bg-gray-200 text-gray-600 group-hover:bg-gray-200"
-        >
-          5
-        </span>
-      </a>
+            <span
+              class="ml-auto inline-block py-0.5 px-3 text-xs rounded-full"
+              current-class="bg-gray-50"
+              default-class="bg-gray-200 text-gray-600 group-hover:bg-gray-200"
+            >
+              5
+            </span>
+          </a>
 
-      <a
-        asp-area="" asp-page="/Error"
-        class="group flex items-center px-3 py-2 text-sm font-medium rounded-md"
-        default-class="text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-        current-class="bg-gray-200 text-gray-900"
-        aria-current-state="Page"
-      >
-        <heroicon-outline
-          icon="ExclamationCircle"
-          class=" flex-shrink-0 -ml-1 mr-3 h-6 w-6"
-          default-class="text-gray-400 group-hover:text-gray-500"
-          current-class="text-gray-500"
-        />
-        <span class="truncate">Error</span>
+          <a
+            asp-area="" asp-page="/Error"
+            class="group flex items-center px-3 py-2 text-sm font-medium rounded-md"
+            default-class="text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            current-class="bg-gray-200 text-gray-900"
+            aria-current-state="Page"
+          >
+            <heroicon-outline
+              icon="ExclamationCircle"
+              class=" flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+              default-class="text-gray-400 group-hover:text-gray-500"
+              current-class="text-gray-500"
+            />
+            <span class="truncate">Error</span>
 
-        <span
-          class="ml-auto inline-block py-0.5 px-3 text-xs rounded-full"
-          current-class="bg-gray-50"
-          default-class="bg-gray-200 text-gray-600 group-hover:bg-gray-200"
-        >
-          20+
-        </span>
-      </a>
-    </nav>
-  </div>
-  <div class="mt-8">
-    <main role="main" class="pb-3">
-      @RenderBody()
-    </main>
+            <span
+              class="ml-auto inline-block py-0.5 px-3 text-xs rounded-full"
+              current-class="bg-gray-50"
+              default-class="bg-gray-200 text-gray-600 group-hover:bg-gray-200"
+            >
+              20+
+            </span>
+          </a>
+        </nav>
+      </div>
+      <main role="main" class="mx-auto w-64 pb-3">
+        @RenderBody()
+      </main>
+    </div>
+    <div class="relative flex-1">
+      <div class="absolute inset-0 p-6 overflow-auto bg-black text-white">
+        <h2 class="text-2xl">ModelState</h2>
+        <pre class="pt-6"><code>@Html.Dump(ViewContext.ModelState)</code></pre>
+        <h2 class="pt-6 text-2xl">TempData</h2>
+        <pre class="pt-6"><code>@Html.Dump(ViewContext.TempData)</code></pre>
+      </div>
+    </div>
   </div>
 </body>
 </html>
