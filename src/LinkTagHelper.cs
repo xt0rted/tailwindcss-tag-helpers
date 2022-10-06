@@ -1,5 +1,7 @@
 namespace Tailwind.Css.TagHelpers;
 
+using System.Text.Encodings.Web;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Options;
@@ -8,8 +10,10 @@ using Microsoft.Extensions.Options;
 [HtmlTargetElement("a", Attributes = DefaultClassAttributeName)]
 public class LinkTagHelper : LinkTagHelperBase
 {
-    public LinkTagHelper(IOptions<TagOptions> settings)
-        : base(settings)
+    public LinkTagHelper(
+        IOptions<TagOptions> settings,
+        HtmlEncoder htmlEncoder)
+        : base(settings, htmlEncoder)
     {
     }
 

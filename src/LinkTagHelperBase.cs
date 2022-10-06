@@ -14,16 +14,26 @@ public abstract class LinkTagHelperBase : TagHelper
     protected const string CurrentClassAttributeName = "current-class";
     protected const string DefaultClassAttributeName = "default-class";
 
-    protected static readonly char[] SpaceChars = { '\u0020', '\u0009', '\u000A', '\u000C', '\u000D' };
-
     private readonly TagOptions _settings;
+    private readonly HtmlEncoder _htmlEncoder;
 
-    protected LinkTagHelperBase(IOptions<TagOptions> settings)
-        => _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+    protected LinkTagHelperBase(
+        IOptions<TagOptions> settings,
+        HtmlEncoder htmlEncoder)
+    {
+        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+        _htmlEncoder = htmlEncoder ?? throw new ArgumentNullException(nameof(htmlEncoder));
+    }
 
+    /// <summary>
+    /// The classes to apply when the link url matches the current url.
+    /// </summary>
     [HtmlAttributeName(CurrentClassAttributeName)]
     public string? CurrentClass { get; set; }
 
+    /// <summary>
+    /// The classes to apply when the link url doesn't match the current url.
+    /// </summary>
     [HtmlAttributeName(DefaultClassAttributeName)]
     public string? DefaultClass { get; set; }
 
@@ -35,23 +45,16 @@ public abstract class LinkTagHelperBase : TagHelper
     {
         if (output is null) throw new ArgumentNullException(nameof(output));
 
-        string[]? classList;
-
-        if (isMatch)
-        {
-            classList = CurrentClass?.Split(SpaceChars, StringSplitOptions.RemoveEmptyEntries);
-        }
-        else
-        {
-            classList = DefaultClass?.Split(SpaceChars, StringSplitOptions.RemoveEmptyEntries);
-        }
+        var classList = isMatch
+            ? Utilities.SplitClassList(CurrentClass)
+            : Utilities.SplitClassList(DefaultClass);
 
         if (_settings.IncludeComments)
         {
             output.PreElement.AppendHtmlLine("<!--");
 
             output.PreElement.Append("  Base: ");
-            output.PreElement.AppendLine(output.Attributes["class"]?.Value?.ToString() ?? "");
+            output.PreElement.AppendLine(Utilities.ExtractClassValue(output, _htmlEncoder));
 
             output.PreElement.Append("  Current: ");
             output.PreElement.AppendLine(CurrentClass ?? "");
