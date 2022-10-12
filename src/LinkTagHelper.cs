@@ -25,7 +25,7 @@ public class LinkTagHelper : LinkTagHelperBase
         if (output is null) throw new ArgumentNullException(nameof(output));
 
         var currentPath = ViewContext.HttpContext.Request.Path;
-        var linkPath = new PathString(output.Attributes["href"]?.Value as string);
+        var linkPath = new PathString(output.Attributes.GetValue("href"));
         var isMatch = IsMatch(currentPath, linkPath);
 
         context.Items.Add(
