@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [0.3.0](https://github.com/xt0rted/tailwindcss-tag-helpers/compare/v0.2.0...v0.3.0) - 2022-10-11
+
 ### Added
 
 - Added `ValidationStatusTagHelper` which will allow styling elements based on a field's validation status (e.g. style a form input red when it contains errors)
