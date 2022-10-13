@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fixed bug in `LinkTagHelper` that caused it to not match correctly when using `href="..."`
+
 ## [0.3.0](https://github.com/xt0rted/tailwindcss-tag-helpers/compare/v0.2.0...v0.3.0) - 2022-10-11
 
 ### Added

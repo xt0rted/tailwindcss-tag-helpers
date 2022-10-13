@@ -48,7 +48,7 @@ public abstract class LinkTagHelperBase : TagHelper
             output.PreElement.AppendHtmlLine("<!--");
 
             output.PreElement.Append("  Base: ");
-            output.PreElement.AppendLine(Utilities.ExtractClassValue(output));
+            output.PreElement.AppendLine(output.Attributes.GetValue("class"));
 
             output.PreElement.Append("  Current: ");
             output.PreElement.AppendLine(CurrentClass ?? "");

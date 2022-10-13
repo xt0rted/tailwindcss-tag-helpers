@@ -68,7 +68,7 @@ public class ValidationStatusTagHelper : TagHelper
             output.PreElement.AppendLine(For.Name);
 
             output.PreElement.Append("  Base: ");
-            output.PreElement.AppendLine(Utilities.ExtractClassValue(output));
+            output.PreElement.AppendLine(output.Attributes.GetValue("class"));
 
             output.PreElement.Append("  Default: ");
             output.PreElement.AppendLine(DefaultClass ?? "");
