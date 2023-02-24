@@ -43,14 +43,6 @@ jobs:
       - name: Set up .NET
         uses: xt0rted/setup-dotnet@v1.5.0
 
-      - name: Set up .NET
-        uses: xt0rted/setup-dotnet@v1.5.0
-        with:
-          colored-output: false
-          strip-comments-from-global-json: false
-          dotnet-version: |
-            3.1.x
-
       - run: dotnet tool restore
 
       - run: dotnet r build
