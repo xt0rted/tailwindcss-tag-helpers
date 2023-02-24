@@ -60,6 +60,10 @@ public class LinkAriaCurrentStateTagHelper : TagHelper
             LinkAriaCurrentState.True => "true",
             LinkAriaCurrentState.Page => "page",
             LinkAriaCurrentState.Step => "step",
-            _ => throw new ArgumentOutOfRangeException(nameof(value), value, "Unsuported aria-current state"),
+            LinkAriaCurrentState.False => "false",
+            LinkAriaCurrentState.Location => "location",
+            LinkAriaCurrentState.Date => "date",
+            LinkAriaCurrentState.Time => "time",
+            _ => throw new ArgumentOutOfRangeException(nameof(value), value, "Unsupported aria-current state"),
         };
 }

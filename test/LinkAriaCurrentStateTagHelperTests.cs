@@ -32,6 +32,10 @@ public class LinkAriaCurrentStateTagHelperTests : TagHelperTestBase
     [InlineData(LinkAriaCurrentState.True, "true")]
     [InlineData(LinkAriaCurrentState.Page, "page")]
     [InlineData(LinkAriaCurrentState.Step, "step")]
+    [InlineData(LinkAriaCurrentState.False, "false")]
+    [InlineData(LinkAriaCurrentState.Location, "location")]
+    [InlineData(LinkAriaCurrentState.Date, "date")]
+    [InlineData(LinkAriaCurrentState.Time, "time")]
     public void Should_set_attribute_when_enabled(LinkAriaCurrentState state, string attributeValue)
     {
         // Given
