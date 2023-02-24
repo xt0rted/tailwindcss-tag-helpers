@@ -88,7 +88,7 @@ Will output:
 
 Name | Value | Description
 :-- | :-- | :--
-`aria-current-state` | `True`, `Page` (default), `Step` | The value to use for the `aria-current` attribute.
+`aria-current-state` | `True`, `Page` (default), `Step`, `False`, `Location`, `Date`, `Time` | The value to use for the `aria-current` attribute.
 
 ### LinkTagHelper
 
