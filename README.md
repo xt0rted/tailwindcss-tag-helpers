@@ -181,7 +181,7 @@ Name | Value | Description
 :-- | :-- | :--
 `asp-for` | `ModelExpression` | An expression to be evaluated against the current model.
 `default-class` | `string` | The classes to apply when the form field doesn't have any errors.
-`error-class` | `string` | `default-class` | `string` | The classes to apply when the form field doesn't have any errors.
+`error-class` | `string` | The classes to apply when the form input has one or more errors.
 
 ## Development
 
