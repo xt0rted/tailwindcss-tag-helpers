@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Dropped support for .NET 6
+- Dropped support for .NET 7
+- Added support for .NET 8
+
 ## [0.5.0](https://github.com/xt0rted/tailwindcss-tag-helpers/compare/v0.4.0...v0.5.0) - 2023-02-24
 
 - Dropped support for .NET Core 3.1

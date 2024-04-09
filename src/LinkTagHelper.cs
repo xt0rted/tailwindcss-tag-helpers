@@ -21,8 +21,8 @@ public class LinkTagHelper : LinkTagHelperBase
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        if (context is null) throw new ArgumentNullException(nameof(context));
-        if (output is null) throw new ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(output);
 
         var currentPath = ViewContext.HttpContext.Request.Path;
         var linkPath = new PathString(output.Attributes.GetValue("href"));

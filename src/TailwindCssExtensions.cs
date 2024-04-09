@@ -8,8 +8,8 @@ public static class TailwindCssExtensions
 {
     public static IServiceCollection AddTailwindCssTagHelpers(this IServiceCollection services, IConfiguration configuration)
     {
-        if (services is null) throw new ArgumentNullException(nameof(services));
-        if (configuration is null) throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
 
         services.Configure<TagOptions>(configuration.GetSection("TailwindCss"));
 
@@ -18,8 +18,8 @@ public static class TailwindCssExtensions
 
     public static IServiceCollection AddTailwindCssTagHelpers(this IServiceCollection services, Action<TagOptions> configureOptions)
     {
-        if (services is null) throw new ArgumentNullException(nameof(services));
-        if (configureOptions is null) throw new ArgumentNullException(nameof(configureOptions));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configureOptions);
 
         services.Configure(configureOptions);
 
