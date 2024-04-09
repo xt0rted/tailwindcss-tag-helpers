@@ -1,8 +1,5 @@
 namespace Tailwind.Css.TagHelpers;
 
-using System.Runtime.Serialization;
-
-[Serializable]
 public class ParentContextNotFoundException : Exception
 {
     public ParentContextNotFoundException()
@@ -17,11 +14,6 @@ public class ParentContextNotFoundException : Exception
 
     public ParentContextNotFoundException(string? message, Exception? innerException)
         : base(message, innerException)
-    {
-    }
-
-    protected ParentContextNotFoundException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
     {
     }
 }

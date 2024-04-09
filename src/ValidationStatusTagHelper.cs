@@ -46,8 +46,8 @@ public class ValidationStatusTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        if (context is null) throw new ArgumentNullException(nameof(context));
-        if (output is null) throw new ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(output);
 
         if (For is null)
         {

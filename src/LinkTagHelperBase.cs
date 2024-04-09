@@ -37,7 +37,7 @@ public abstract class LinkTagHelperBase : TagHelper
 
     protected void MergeClassLists(TagHelperOutput output, bool isMatch)
     {
-        if (output is null) throw new ArgumentNullException(nameof(output));
+        ArgumentNullException.ThrowIfNull(output);
 
         var classList = isMatch
             ? Utilities.SplitClassList(CurrentClass)
