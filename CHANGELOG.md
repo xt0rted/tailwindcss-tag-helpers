@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Dropped support for .NET 6
 - Dropped support for .NET 7
 - Added support for .NET 8
 

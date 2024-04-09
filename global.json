@@ -7,8 +7,6 @@
     "clean:bin": "dotnet rimraf **/bin **/obj",
     "build": "dotnet build",
     "test": "dotnet test",
-    "test:6": "dotnet test --framework net6.0",
-    "test:8": "dotnet test --framework net8.0",
     "pack": "dotnet pack --output ./artifacts",
     "ci": "dotnet r build test pack",
     "watch": "dotnet r [env:DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true] watch:sample",
