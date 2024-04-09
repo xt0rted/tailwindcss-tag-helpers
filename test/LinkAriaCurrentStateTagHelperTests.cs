@@ -11,11 +11,9 @@ public class LinkAriaCurrentStateTagHelperTests : TagHelperTestBase
     {
         // Given
         var context = MakeTagHelperContext(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
         var output = MakeTagHelperOutput(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
 
         var logger = A.Dummy<ILogger<LinkAriaCurrentStateTagHelper>>();
         var options = Options.Create(new TagOptions());
@@ -40,11 +38,9 @@ public class LinkAriaCurrentStateTagHelperTests : TagHelperTestBase
     {
         // Given
         var context = MakeTagHelperContext(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
         var output = MakeTagHelperOutput(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
 
         AddLinkContext(context, isMatch: true);
 
@@ -74,11 +70,9 @@ public class LinkAriaCurrentStateTagHelperTests : TagHelperTestBase
     {
         // Given
         var context = MakeTagHelperContext(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
         var output = MakeTagHelperOutput(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
 
         var logger = A.Dummy<ILogger<LinkAriaCurrentStateTagHelper>>();
         var options = Options.Create(
@@ -100,11 +94,9 @@ public class LinkAriaCurrentStateTagHelperTests : TagHelperTestBase
     {
         // Given
         var context = MakeTagHelperContext(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
         var output = MakeTagHelperOutput(
-            tagName: "a",
-            new TagHelperAttributeList());
+            tagName: "a");
 
         var logger = A.Dummy<ILogger<LinkAriaCurrentStateTagHelper>>();
         var options = Options.Create(

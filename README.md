@@ -102,7 +102,8 @@ The naming of these attributes aligns with the comments found in the Tailwind UI
 
 The matching method can be either `Full` (default) which ensures the link path and current path are the same, or `Base` which ensures the link path starts with, or is the same as, the current path.
 
-> **Note**: Query string values are not used for either method of matching.
+> [!NOTE]
+> Query string values are not used for either method of matching.
 
 ```html
 <a
@@ -146,6 +147,37 @@ Name | Value | Description
 `current-class` | `string` | The css classes to apply if the link matches the current url.
 `default-class` | `string` | The css classes to apply if the link doesn't match the current url.
 `match` | `Full` (default) or `Base` | The method to use when matching the link to the current url.
+
+### MergeDefaultClassTagHelper
+
+The merge default class tag helper is applied by adding the `merge-classes` attribute and will merge the `default-class` attribute with the `class` attribute.
+This can be helpful when you aren't using another tag helper that works with the class lists, but still need access to the default classes of an element in your JavaScript.
+
+```html
+<div
+  merge-classes
+  class="flex flex-col"
+  default-class="bg-white text-black"
+>
+</div>
+```
+
+This tag helper target element is `*` so it can be used with any element, including web components and other tag helpers.
+
+```html
+<heroicon-solid
+  icon="AtSymbol"
+  merge-classes
+  class="h-5 w-5"
+  default-class="text-gray-400"
+/>
+```
+
+#### Attributes
+
+Name | Value | Description
+:-- | :-- | :--
+`default-class` | `string` | The classes to merge into the class attribute.
 
 ### ValidationStatusTagHelper
 
