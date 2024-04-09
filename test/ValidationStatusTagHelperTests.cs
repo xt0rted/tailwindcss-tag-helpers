@@ -13,11 +13,9 @@ public class ValidationStatusTagHelperTests : TagHelperTestBase
     {
         // Given
         var context = MakeTagHelperContext(
-            tagName: "input",
-            new TagHelperAttributeList());
+            tagName: "input");
         var output = MakeTagHelperOutput(
-            tagName: "input",
-            new TagHelperAttributeList());
+            tagName: "input");
 
         var options = Options.Create(new TagOptions());
         var helper = new ValidationStatusTagHelper(options)
